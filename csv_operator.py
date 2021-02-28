@@ -26,9 +26,10 @@ class CSV_Operator:
                     sys.stdout.write(f'Warnig: The file {self.top}/{filename} already exists.\n')
             else:
                 raise ValueError(f'The file {self.top}/{filename} already exists.')
-        with open(f'{self.top}/{filename}', 'w') as f:
-            if headers is not None:
-                f.write(','.join(headers)+'\n')
+        else:
+            with open(f'{self.top}/{filename}', 'w') as f:
+                if headers is not None:
+                    f.write(','.join(headers)+'\n')
 
     def add(self, filename: str, content: Union[str, List[str], Tuple[str]]) -> NoReturn:
         if isinstance(content, (list, tuple)):
